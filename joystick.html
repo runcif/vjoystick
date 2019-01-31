@@ -8,7 +8,7 @@
 			overflow	: hidden;
 			padding		: 0;
 			margin		: 0;
-			background-color: #BBB;
+			background-color: #FBEFEF;
 		}
 		#info {
 			position	: absolute;
@@ -39,9 +39,14 @@
 	<body>
 		<div id="container"></div>
 		<div id="info">
-			Touch the screen and move
+			Joystick 1.0<br> <a href="https://runci.org">runci.org </a>
 			<br/>
 			<span id="result"></span>
+			<form class="button" action="cmd.php" method="GET"> 
+			<br><button type="submit" value="1" name="cmd">Arma motori</button></br>
+			<br><button type="submit" value="2" name="cmd">Accessorio 1</button></br>
+			<br><button type="submit" value="3" name="cmd">Accessorio 2</button></br>
+			</form>
 		</div> 
 		<script src="./virtualjoystick.js"></script>
 		<script>
@@ -66,9 +71,9 @@
 				var outputEl	= document.getElementById('result');
 				newX = Math.round(joystick.deltaX());
 				newY = Math.round(joystick.deltaY()) * -1;
-				outputEl.innerHTML	= '<b>Position:</b> '
-					+ ' X:'+newX
-					+ ' Y:'+newY;
+				outputEl.innerHTML	= '<b>Posizione:</b> '
+					+ ' X(destra-sinistra):'+newX
+					+ ' Y(avanti-dietro):'+newY;
 				if ( newX != prevX || newY != prevY ){
 					var xhr = new XMLHttpRequest();
 					xhr.open('PUT', "./jsData.php?x="+newX+"&y="+newY)
